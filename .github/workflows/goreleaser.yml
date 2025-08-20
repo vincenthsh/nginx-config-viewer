@@ -29,6 +29,10 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
           git checkout "refs/tags/${{ inputs.tag }}"
+      - name: Use main branch GoReleaser config (manual run)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          git show origin/main:.goreleaser.yaml > .goreleaser.yaml
           
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
