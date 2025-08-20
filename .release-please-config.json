@@ -23,8 +23,7 @@
           "type": "refactor",
           "section": "Code Refactoring"
         }
-      ],
-      "release-as": "1.0.0"
+      ]
     }
   }
 }
