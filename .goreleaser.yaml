@@ -33,11 +33,11 @@ builds:
 archives:
   - format_overrides:
       - goos: linux
-        format: tar.gz
+        formats: ["tar.gz"]
       - goos: darwin
-        format: tar.gz
+        formats: ["tar.gz"]
       - goos: windows
-        format: zip
+        formats: [zip]
     name_template: >-
       {{ .ProjectName }}_
       {{- title .Os }}_
@@ -72,7 +72,7 @@ changelog:
 
 release:
   github:
-    owner: vincentdesmet
+    owner: vincenthsh
     name: nginx-config-viewer
   draft: false
   prerelease: auto
@@ -96,7 +96,7 @@ release:
     ```
 
   footer: |
-    **Full Changelog**: https://github.com/vincentdesmet/nginx-config-viewer/compare/{{.PreviousTag}}...{{.Tag}}
+    **Full Changelog**: https://github.com/vincenthsh/nginx-config-viewer/compare/{{.PreviousTag}}...{{.Tag}}
 
     ---
     🚀 **Built with**: Go {{.Env.GOVERSION}} + React + Monaco Editor

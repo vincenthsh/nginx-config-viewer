@@ -15,20 +15,20 @@ A single binary Golang nginx configuration webviewer with React frontend, Monaco
 
 ### Download Pre-built Binary
 
-Download the latest release for your platform from [GitHub Releases](https://github.com/vincentdesmet/nginx-config-viewer/releases):
+Download the latest release for your platform from [GitHub Releases](https://github.com/vincenthsh/nginx-config-viewer/releases):
 
 ```bash
 # Linux AMD64
-wget https://github.com/vincentdesmet/nginx-config-viewer/releases/latest/download/nginx-config-viewer_Linux_x86_64.tar.gz
+wget https://github.com/vincenthsh/nginx-config-viewer/releases/latest/download/nginx-config-viewer_Linux_x86_64.tar.gz
 
 # Linux ARM64  
-wget https://github.com/vincentdesmet/nginx-config-viewer/releases/latest/download/nginx-config-viewer_Linux_arm64.tar.gz
+wget https://github.com/vincenthsh/nginx-config-viewer/releases/latest/download/nginx-config-viewer_Linux_arm64.tar.gz
 
 # macOS Intel
-wget https://github.com/vincentdesmet/nginx-config-viewer/releases/latest/download/nginx-config-viewer_Darwin_x86_64.tar.gz
+wget https://github.com/vincenthsh/nginx-config-viewer/releases/latest/download/nginx-config-viewer_Darwin_x86_64.tar.gz
 
 # macOS Apple Silicon
-wget https://github.com/vincentdesmet/nginx-config-viewer/releases/latest/download/nginx-config-viewer_Darwin_arm64.tar.gz
+wget https://github.com/vincenthsh/nginx-config-viewer/releases/latest/download/nginx-config-viewer_Darwin_arm64.tar.gz
 ```
 
 Extract and run:
