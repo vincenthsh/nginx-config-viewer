@@ -1,0 +1,3 @@
+[tools]
+goreleaser = "latest"
+node = "22"

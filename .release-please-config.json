@@ -1,0 +1,30 @@
+{
+  "release-type": "go",
+  "packages": {
+    ".": {
+      "changelog-sections": [
+        {
+          "type": "feat",
+          "section": "Features"
+        },
+        {
+          "type": "fix",
+          "section": "Bug Fixes"
+        },
+        {
+          "type": "deps",
+          "section": "Dependencies"
+        },
+        {
+          "type": "perf",
+          "section": "Performance Improvements"
+        },
+        {
+          "type": "refactor",
+          "section": "Code Refactoring"
+        }
+      ],
+      "release-as": "1.0.0"
+    }
+  }
+}

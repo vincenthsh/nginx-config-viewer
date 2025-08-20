@@ -1,0 +1,33 @@
+cjs
+esm
+build
+node_modules
+npm-debug.log*
+package-lock.json
+yarn.lock
+
+.eslintcache
+.DS_Store
+.cache
+.vscode
+
+*.bak
+*.tem
+*.temp
+#.swp
+*.*~
+~*.*
+
+bin
+
+# Go build artifacts
+nginx-config-viewer
+nginx-config-viewer-*
+
+# GoReleaser dist folder
+dist/
+
+# Release artifacts
+*.tar.gz
+*.zip
+checksums.txt

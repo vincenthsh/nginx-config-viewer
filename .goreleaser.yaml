@@ -1,0 +1,102 @@
+version: 2
+
+project_name: nginx-config-viewer
+
+before:
+  hooks:
+    # Install pnpm dependencies for React build
+    - pnpm install --dir website
+    # Generate React build (this runs via go:generate)
+    - go generate ./...
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    # Exclude invalid combinations
+    ignore:
+      - goos: windows
+        goarch: arm64
+    binary: nginx-config-viewer
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.date={{.Date}}
+
+archives:
+  - format_overrides:
+      - goos: linux
+        format: tar.gz
+      - goos: darwin
+        format: tar.gz
+      - goos: windows
+        format: zip
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+
+checksum:
+  name_template: 'checksums.txt'
+  algorithm: sha256
+
+changelog:
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'
+      - '^chore:'
+      - '^build:'
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: 'Bug fixes'
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: Others
+      order: 999
+
+release:
+  github:
+    owner: vincentdesmet
+    name: nginx-config-viewer
+  draft: false
+  prerelease: auto
+  mode: replace
+  header: |
+    ## nginx-config-viewer {{.Tag}}
+
+    A production-ready nginx configuration viewer with syntax highlighting, live reload, and integrated documentation tooltips.
+
+    ### Features
+    - Monaco Editor with nginx syntax highlighting
+    - Real-time file watching and live reload via Server-Sent Events
+    - Built-in nginx directive documentation tooltips
+    - Professional React frontend embedded in a single binary
+    - Production-ready with security hardening
+
+    ### Installation
+    Download the appropriate binary for your platform below and run:
+    ```bash
+    ./nginx-config-viewer -addr :8080 -path /etc/nginx/nginx.conf
+    ```
+
+  footer: |
+    **Full Changelog**: https://github.com/vincentdesmet/nginx-config-viewer/compare/{{.PreviousTag}}...{{.Tag}}
+
+    ---
+    🚀 **Built with**: Go {{.Env.GOVERSION}} + React + Monaco Editor

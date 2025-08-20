@@ -1,0 +1,19 @@
+# /etc/systemd/system/nginx-config-viewer.service
+[Unit]
+Description=nginx.conf viewer with SSE reload
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/nginx-config-viewer -addr :8080 -path /etc/nginx/nginx.conf
+User=www-data
+Group=www-data
+AmbientCapabilities=
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/etc/nginx
+CapabilityBoundingSet=
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
